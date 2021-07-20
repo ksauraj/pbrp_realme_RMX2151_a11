@@ -25,9 +25,18 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Inherit from RMX2151 device
 $(call inherit-product, device/realme/RMX2151/device.mk)
 
+# Dynamic
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 # Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
-$(call inherit-product, vendor/omni/config/gsm.mk)
+$(call inherit-product, vendor/pb/config/common.mk)
+
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
+
+# Fastbootd
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.0-impl-mock \
+    android.hardware.fastboot@1.0-impl-mock.recov
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := RMX2151
