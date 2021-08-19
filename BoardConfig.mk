@@ -70,6 +70,7 @@ TARGET_KERNEL_SOURCE := kernel/realme/RMX2151
 TARGET_KERNEL_CONFIG := RMX2151_defconfig
 
 # Android Verified Boot
+BOARD_INCLUDE_DTBO_IN_BOOTIMG := true
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
 BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
